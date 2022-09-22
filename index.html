@@ -1,0 +1,466 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Java Core - Introducere in Java</title>
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="elements/codelab.html">
+ <style is="custom-style">
+    body {
+      font-family: 'monospace';
+      background: var(--google-codelab-background, --paper-grey-300);
+    }
+  </style>
+  
+</head>
+<body unresolved class="fullbleed">
+
+  <google-codelab title="Modul1 -> Introducere in universul Java"
+                  feedback-link="https://github.com/googlecodelabs"
+                  environment="web"
+                  last-updated="2016-07-18">
+
+      <google-codelab-step label="Terminologie" duration="10">
+	<h2>Codul sursa</h2>
+	<p>Codul sursa sau "programul sursa” (en: "source code”) reprezintă un set de instrucțiuni, specific unui anumit limbaj de programare. Codul sursă permite programatorului să comunice cu computerul folosind un număr bine definit de instrucțiuni. </p>
+	<h2>Comenzi/Instructiuni</h2>
+	<p>Un program executa diferite actiuni sau operatii pe baza unor 'comenzi'. 
+Spre exemplu daca dorim sa afisam pe ecran textul "Salut", trebuie sa apelam 'comanda' System.out.println</p>		
+	<pre><code language="java">System.out.println("Hello world!");</code></pre>
+
+        <p>Comanda <i>System.out.println</i> afiseaza pe ecran textul furnizat in interiorul parantezelor</p>
+	
+	<h2>Rularea unui program</h2>
+      	<p>Calculatorul nu executa/"intelege" in mod direct codul sursa, acesta trebuie compilat (in cazul Java)</p>
+	<aside class="special">Compilarea  reprezinta transformarea programului-sursă în totalitatea sa într-un program echivalent scris în limbaj mașină, care apoi este executat</aside>
+	<aside class="warning">
+		<b>Bine de stiu!</b>
+		<p>Pentru rularea unui program sursa, exista, in principiu, doua abordari: compilarea sau interpretarea. In cazul interpretarii, interpretorul ia prima instructiune din programul-sursa, o transforma in limbaj masina si o executa; apoi trece la urmatoarea instructiune etc</p>
+		<p>Exemple de limbaje de programare interpretate: php, sql, javascript</p>
+		<p>Exemple de limbaje de programare compilate: Java, C#</p>
+	</aside>
+	
+       <h2>Structura codului sursa</h2>
+        <li>;</li>
+	<p>se foloseste pentru separarea instructiunilor </p> 
+	<pre><code language="java">System.out.print("Hello "); System.out.print("world");
+System.out.print("!");
+	</code></pre>
+	<li>paranteze ()</li>
+	<p>Sunt folosite pentru a transmite informatii/date instructiunilor</p>
+	<li>comentarii</li>
+	Comentariile sunt folosite pentru a lasa notite in codul-sursa. Ele nu au nici un efect asupra rularii unui program
+	<pre><code language="java">
+//Acum afisam un salut utilizatorului
+System.out.println("Hello world!");</code></pre>
+	<aside class="special">Compilatorul, in momentul compilarii codului-sursa, se asigura ca toate aceste regului sunt respectate. In cazul in care aceste regului nu sunt respectate,
+compilatorul va produce o eroare </aside>
+	</google-codelab-step>
+	
+<google-codelab-step label="Primul meu program java" duration="5">
+	<p>Verificam daca avem Java instalat</p>
+	<pre><code language="java">
+		java -version
+</code></pre>
+	<p>In cazul in care Java este instalat primim un mesaj asemanator cu cel de mai jos:</p>
+<pre><code language="java">
+[posa@localhost Documents]$ java -version
+openjdk version "1.8.0_141"
+OpenJDK Runtime Environment (build 1.8.0_141-b16)
+OpenJDK 64-Bit Server VM (build 25.141-b16, mixed mode)
+</code></pre>
+	<h2>Pasii necesari pentru a crea un program Java</h2>
+	<p>Pentru a realiza un program Java sunt necesari 3 pasi: <b>crearea codului sursa, compilarea codului sursa si rularea programului</b>.</p>
+	<img src="compilare.png" style="max-width: 750px">
+	<h2>Crearea fisierului cod sursa</h2>
+	<p>Folosind un editor de text (spre exemplu Notepad) creati un fisier cu numele PrimulProgram.java</p>
+	<p>Adaugati urmatoarea secventa de cod in cadrul fisierului mai sus creat<p>
+	<pre><code language="java">
+public class PrimulProgram {
+
+    public static void main(String[] args) {
+
+    }
+	
+}
+</code></pre>
+<aside class="warning">
+Sectiunea "public static void main(String[] args)" reprezinta 'punctul' de intrare in program. Orice sectiune de cod trebuie adaugata doar in cadrul acestei sectiuni.
+Structura fisierului va fi detaliata ulterior, pentru moment este suficient sa cunoastem ca orice comanda pe care dorim sa o scriem trebuie sa faca parte din aceasta sectiune. In continuare vom numi aceasta sectiune din codul-sursa folosind termenul de "sectiune principala". 
+</aside>
+	<p>Folosind doar sectiunea mai sus mentionata, adaugati comenzi codului-sursa pentru a afisa pe ecran textul "Salutari de la primul meu program Java"</p>
+	<p>In final, fisierul PrimulProgram.java trebuie sa aibe continutul</p>
+<pre><code language="java">
+public class PrimulProgram {
+    public static void main(String[] args) {
+	System.out.println("Salutari de la primul meu program Java");
+    }
+}
+</code></pre>
+	<h2>Compilarea codului sursa</h2>
+ 	<p>Deschideti un terminal de comenzi (cmd) si folosind utilitarul <b>javac</b> compilati codul sursa</p>
+<pre><code language="java">
+javac PrimulProgram.java
+</code></pre>
+	<aside class="warning">
+	Daca compilarea s-a efectuat cu succes, in aceeasi locatie cu cea a codului sursa s-a creat un nou fisier PrimulProgram.class. Acest fisier contine <b>bytecode</b>, un set de instructiuni intelese de Java Virtual Machine. 
+	Deschideti acest fisier cu un editor text si observati continutul.<br>
+	Pentru a vedea intreg continutul fisierului rulati urmatoarea comanda: 
+<pre><code language="java">
+javap -c PrimulProgram.class
+</code></pre>
+
+
+	</aside>
+	<h2>Rularea programului</h2>	
+	<p>Folosind comanda de mai jos rulati programul nou creat: </p>
+<pre><code language="java">
+	java PrimulProgram
+</code></pre>
+	
+</google-codelab-step>
+
+	<google-codelab-step label="Primul meu program java - IDE" duration="10">
+	<h2>IDE</h2>	
+<aside class="special">Mediul de dezvoltare (en: "IDE" -integrated development environment-) reprezinta un set de programe care ajuta programatorul in scrierea codului-sursa; el imbina toti pasii necesari crearii unui program</aside>
+	<p>In cadrul acestui curs vom folosi <i>IntelliJ IDEA</i> <img src="idea.jpg" style="max-width: 35px"></p>
+	<h2>Crearea unui proiect Java</h2>		
+        <p>Pentru crearea/definirea unui proiect Java folosind IntelliJ IDEA se urmaresc pasii:</p>
+	<li>Folosind meniul File->New->Project deschidem fereastra de definire proiect nou:</li>
+	<img src="new_project.png" style="max-width: 750px">
+	<li>Navigam prin apasarea butonul "Next" pana in ultimul pas, unde trebuie sa alegem un nume pentru proiect</li>
+	<h2>Crearea unui fisier pentru codul-sursa</h2>
+	<li>Faceti clik-dreapta pe folder-ul <i>src</i>, alegeti New->Java Class si introduceti "Primul Program"</li>	
+	Inlocuiti continutul fisierului nou creat cu sectiunea de cod de mai jos:
+<pre><code language="java">	
+public class PrimulProgram {
+
+    public static void main(String[] args) {
+
+    }
+
+}
+</pre></code>
+<aside class="warning">
+Sectiunea "public static void main(String[] args)" reprezinta 'punctul' de intrare in program. Orice sectiune de cod trebuie adaugata doar in cadrul acestei sectiuni.
+Structura fisierului va fi detaliata ulterior, pentru moment este suficient sa cunoastem ca orice comanda pe care dorim sa o scriem trebuie sa faca parte din aceasta sectiune. In continuare vom numi aceasta sectiune din codul-sursa folosind termenul de "sectiune principala". 
+</aside>
+	<h2>Adaugarea de comenzi</h2>
+	Folosind doar sectiunea mai sus mentionata, adaugati comenzi codului-sursa pentru a afisa pe ecran textul "Salutari de la primul meu program Java"
+	<h2>Compilarea si rularea</h2>
+ 	<p>Odata finalizat codul-sursa el trebuie mai intai compilat si apoi rulat/executat. Folosind IntelliJ IDEA facem aceste doua operatiuni simultan prin selectarea optiuni <i>Run</i> din meniu si apasand butonul <i>Run 'Primulprogram'</i></p>
+        <p>In cazul in care totul este corect, in partea de jos a IDE-ului va aparea 'rezultatul' rularii programului </p>
+	<aside class="special">
+Modificati codul-sursa astfel incat cel putin una dintre cerintele codului-sursa amintite mai sus sa nu fie respectata. Observati eroarea/erorile de compilare!</aside>
+      </google-codelab-step>
+
+     <google-codelab-step label="Exercitii" duration="20">
+<h2>1. Realizati un program pentru a afisa pe ecran textul "Salut" iar pe urmatoarele linii numele colegilor de langa tine (fiecare nume pe un rand nou)</h2>
+<h2>2. Realizati un program pentru a afisa pe ecran un brad desenat din caractere ca in exemplul de mai jos:</h2>
+<pre><code language="java">
+    *
+   ***
+  *****
+ *******
+*********
+    *
+ </pre></code language="java">    
+<aside class="special">In realizarea acestor exercitii se va folosi in mod repetat instructiunea <i>System.out.println()</i>. 
+Pentru rapiditatea tastarii caracterelor corespunzatoare acestei instructiuni tastatati <i>sout</i> apoi apasati tasta <i>TAB</i> iar IDE-ul va va asista in introducerea instructiunii</aside>  
+<aside class="special"><b>De retinut!</b><p>Ceea ce a fost promovat mai sus poarta denumirea de shortcut (romana: scurtatura) si reprezinta un mecanism oferit de catre IDE pentru a spori productivitatea programatorului</p>
+<p>Alte scurtaturi utile: 
+<li>CTRL + SPACE = autocomplete</li>
+<li>CTRL + ALT + tasta L = formatarea codului</li>
+</p>
+</aside> 
+	</google-codelab-step>	
+<google-codelab-step label="Variabile si tipuri de date" duration="20">
+	<h2>Variabile</h2>
+	<aside class="special">Variabila reprezinta unul dintre conceptele cele mai importante din programare si reprezinta. Ea poate fi inteleasa foarte usor ca o 'cutie' in care putem stoca informatie. </aside>
+	<p>In Java orice variabila are un tip.</p>
+	<p>Tipuri de variabile in Java: String (text), int, double, boolean (valori de adevar)</p>
+	<h2>Declararea unei variabile</h2>
+	<p>Sintaxa generala : 
+<pre>
+TIP NUME_VARIABLA = LITERAL;
+int a = 2;
+
+TIP NUME_VARIABLA = EXPRESIE;             
+int a = 5 + 6;
+int a = b + 2; 
+ 
+TIP NUME_VARIABLA;
+int a;
+</pre>	
+	
+	<pre><code language="java">
+int speed = 240;
+String name = "Bogdan";
+double amount = 100.45d;
+boolean iKnowJava = true;
+
+System.out.println(speed);
+System.out.println(name);
+System.out.println(amount);
+System.out.println(iKnowJava);
+	</pre></code language="java"> 
+	<p>Rulati codul de mai sus si observati rezultatul</p>
+	
+	<h2>Literals</h2>
+	<p>Un literal reprezinta o valoare constanta, precum 123, -456, 3.14, -1.2e3, 'a', "Hello", care este folosita in programul sursa. Poate fi asignat unei variabile sau folosita in expresii. 
+	Exemplu: 100, 100d, 100f, 100l, reprezinta literali pentru a declara un int, un double, un float, un long.</p>
+
+	<h2>Tipuri de date</h2>
+	<p>Tipul unei variabile determina valoarea pe care respectiva variabila o poate avea precum si operatiile care pot fi efectuate asupra ei. In Java exista 8 tipuri de date primitive ce sunt predefinite de catre limbaj si denumite prin cuvinte cheie rezervate.
+	<p> <table border="0" cellspacing="0" cellpadding="2" width="488">
+<tbody>
+<tr>
+<td valign="top" width="53" align="center">
+<p align="center"><strong>Tip data</strong></p>
+</td>
+<td valign="top" width="97" align="center">
+<p align="center"><strong>Dimensiune</strong></p>
+</td>
+<td valign="top" width="229">
+<p align="center"><strong>Valori cu semn</strong></p>
+</td>
+<td valign="top" width="107">
+<p align="center"><strong>Tip</strong></p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="54" align="center">byte</td>
+<td valign="top" width="97" align="center">1 byte</td>
+<td valign="top" width="229">-128 –&gt; 127</td>
+<td valign="top" width="107">intreg</td>
+</tr>
+<tr>
+<td valign="top" width="54" align="center">short</td>
+<td valign="top" width="97" align="center">2 bytes</td>
+<td valign="top" width="229">-32768 –&gt; 32767</td>
+<td valign="top" width="107">intreg</td>
+</tr>
+<tr>
+<td valign="top" width="54" align="center">int</td>
+<td valign="top" width="97" align="center">4 bytes</td>
+<td valign="top" width="229">-2147483648 –&gt; 2147483647</td>
+<td valign="top" width="107">intreg</td>
+</tr>
+<tr>
+<td valign="top" width="54" align="center">long</td>
+<td valign="top" width="97" align="center">8 bytes</td>
+<td valign="top" width="229">-9,223,372,036,854,775,808 –&gt; 9,223,372,036,854,775,807</td>
+<td valign="top" width="107">intreg</td>
+</tr>
+<tr>
+<td valign="top" width="54" align="center">float</td>
+<td valign="top" width="97" align="center">4 bytes</td>
+<td valign="top" width="229">7 cifre semnificative</td>
+<td valign="top" width="107">real simpla precizie</td>
+</tr>
+<tr>
+<td valign="top" width="54" align="center">double</td>
+<td valign="top" width="97" align="center">8 bytes</td>
+<td valign="top" width="229">15 cifre semnificative</td>
+<td valign="top" width="107">real dubla precizie</td>
+</tr>
+<tr>
+<td valign="top" width="54" align="center">char</td>
+<td valign="top" width="97" align="center">2 bytes</td>
+<td valign="top" width="229">‘\u0000’ –&gt; ‘\uffff’          <br>0 –&gt; 65535</td>
+<td valign="top" width="107">caracter Unicode pe 16 biti</td>
+</tr>
+<tr>
+<td valign="top" width="54" align="center">boolean</td>
+<td valign="top" width="97" align="center">1 bit</td>
+<td valign="top" width="230">true sau false</td>
+<td valign="top" width="135">logic</td>
+</tr>
+</tbody>
+</table>	</p>
+	<p>Exemple de declarare:</p>
+	<ul>	
+	<li>
+		Declarare int: int varsta = 18;
+	</li>
+	<li>
+		Declarare float: float greutate = 77.5f;
+	</li>
+	<li>
+		Declarare double: double greutate = 77.5;
+	</li>
+	</ul>
+	<p>
+	<aside class="special">
+	In java, tipul default pentru numere reale il reprezinta double. In cazurile in care se doreste folosirea tipului float atunci trebuie marcat explicitiv folosirea acestui tip prin
+ caracterul <b>'f'</b> la finalul numarului.
+</aside>	
+<p>
+	<aside class="warning">
+	Pe langa diferentele de dimensiune ale tipurile de mai sus, diferenta intre tipul float si cel double o reprezinta si precizia zecimala pe care o ofera.
+	<br>
+	Rulati codul de mai jos:
+	<pre><code language="java">
+float greutateFloat = 77.42232322f;
+double greutateDouble = 77.42232322d;
+
+System.out.println(greutateFloat);
+System.out.println(greutateDouble);
+	</pre></code language="java"> 
+	</aside>
+	<b>Transformarea dintr-un tip in altul.	</b>
+	<br>Este posibila transmiterea valorii unei variabile la o variabila de alt tip. Aceasta operatie se poate face in doua feluri:
+	<ul>
+		<li>Fara pierdere de precizie: int to double</li>
+		<li>Cu pierdere de precizie: double to int</li>
+	</ul>
+	<br>
+	In cazul in care se doreste copierea unei variabile catre o variabila cu un tip mai restrictiv (cu pierdere de informatie), acest lucru trebuie marcat explictiv in cod. 
+	<br>Aceste lucru se realizeaza prin marcarea tipului destinatie in fata expresiei ce trebuie asignata
+<pre><code language="java">
+double a = 45.3;
+int b = (int) a;
+
+System.out.println(b);	
+	</pre></code language="java"> 
+	</p>
+
+	
+	</p>
+	<h2>Operatori</h2>
+	<p>Operatorii definesc operatii specifice ce se aplica asupra variabilelor pentru a obtine variabile noi</p>
+	<p>In exemplul de mai sus s-a folosit operatorul = ce semnifica asignarea unei valori pentru o variabila.
+	O variabila poate fi doar declarata, fara a fi necesara initializarea ei. Valoarea unei variabile poate fi ulterior modificata prin re-asignare sau folosind operatorii mai jos mentionati
+</p>	
+	<pre><code language="java">
+int speed;
+speed =240;
+	</pre></code language="java"> 
+	<aside class="warning">O variabila poate fi declarata o singura data in cadrul unui program.
+	Spre exemplu, urmatoarea sectiune de cod este invalida:
+	<pre><code language="java">
+int speed = 240;
+double speed = 100.23d;
+	</pre></code language="java"> 
+</aside>
+	
+	
+	<p>Asupra variabilelor numerice (int, double) se pot folosi urmatorii operatori matematici:</p>
+	<li>  + adunarea </li>  	
+        <li>  - scaderea </li> 
+	<li>  * inmultirea </li>
+	<li>  / impartirea </li>
+	<li>  % catul (engleza 'reminder') </li>
+	<li>  == egalitate </li>
+	<p>In cazul String-urilor se poate folosi doar operatorul +, el semnificand concatenarea a doua sau mai multe String-uri</p>
+		
+ 	<h2>Expresii</h2>
+	<aside class="special">
+	O expresie reprezinta o combinatie de operatori ( +, - etc) si operanzi (atat variabile cat si literal)
+	</aside>
+	<p>Exemple:</p>
+	<pre>
+1 + 2 * 3           // evaluat ca 7
+
+int sum, number;
+sum = sum + number;
+	</pre>
+	O expresie se evalueaza si are ca rezultat o valoare ce trebuie folosita: asignata unei variabile sau transmisa ca si parametru unei comenzi.
+	<h2>Expresii aritmetice</h2>
+	<p>In programare expresia
+	<img src="expresie.png" style="max-width: 280px">se scrie, la fel ca in matematica, astfel:</p>
+<pre>
+(1+2*a)/3 + (4*(b+c)*(5-d-e))/f - 6*(7/g+h)
+</pre>
+	<h2>Expresii cu tipuri mixte</h2>
+	<aside class="warning">
+Care este rezultatul rularii codului de mai jos?</aside>
+	<pre>
+int a = 10;
+double b = 4.5;
+
+System.out.println(a + b);
+	</pre>
+Raspunsul este in mod evident 14.5.
+	
+<aside class="warning">
+Dar care este tipul returnat de catre a+b din codul de mai sus?
+</aside>
+<p>In cadrul unei expresii pot fi folosite variabile de tipuri diferite. In acest caz, pentru a stabili tipul valorii rezultate se aplica urmatoarele reguli:</p>
+1. int/int = int.
+<pre>
+int a = 3/2; // a va avea valoarea 1
+</pre>
+<p>2. Daca operanzii au acelasi tip atunci si tipul rezultant va fi acelasi.</p>
+<p>3. Daca operanzii au tipuri diferite atunci operandul de tip inferior va fi promovat catre tipul operandului de tip superior ( in engleza "implicit type casting")</p>
+<p>4. byte, short sau char sunt promovati mai intai la int si apoi se aplica regula 3.</p>
+<p>Deci, revenim la intrebarea initiala, expresia (a+b) va avea tipul double.</p>
+	<h2>String</h2>
+	<p>Pentru a opera cu text, Java ofera clasa String. Momentan nu am definit termenul de clasa dar putem intelege String ca un tip de variabila care poate fi folosit pentru text.</p>
+	<p>O variabila de tip String ce contine textul "Salut" se poate declara astfel:</p>
+	<pre><code language="java">
+String salut = "Salut";
+System.out.println(salut);
+	</pre></code language="java"> 
+</google-codelab-step>	
+
+<google-codelab-step label="Exercitii" duration="30">
+	<ol>
+	<li><b>In cadrul unui program Java declarati cate o variabila pentru fiecare dintre cele 8 tipuri de date primitive. </b>
+<br>Asignati cate o valoare initialia valida fiecarei variabile.</li>
+	<li>
+	<b>Folosind variabilele mai sus declarate incercati asignarea valorilor la variabile de alt tip.</b>
+	<br>Exemplificati principiile de transformare/conversie atat cu pierdere cat si fara pierdere de informatie 
+	<br> Spre exemplu:
+	
+	<pre><code language="java">
+//cu pierdere de informatie	
+double a = 12.3;
+int b = (int) a;
+
+//fara pierdere de informatie
+int c = 10;
+double d = c;
+
+System.out.println(a);
+System.out.println(b);
+System.out.println(c);
+System.out.println(d);
+	</pre></code language="java"> 
+	
+	</li>
+	<li><b>Care este output-ul urmatorului program?</b>
+<pre>	
+int x = 10;
+int y = x + 5;
+int z = y + x - 7;
+
+System.out.println(x);
+System.out.println(y);
+System.out.println(z);
+	</pre>
+	</li>
+	<li><b> Realizati un program Java pentru a calcula numarul de secunde dintr-un an (365 zile)</b></li>
+	<li><b>Completati codul de mai jos pentru a calcula valorea expresiei matematice:</b></li>
+	<img src="expresie_mate.png" style="max-width: 180px">
+<pre><code language="java">
+	public static void main(String[] args) {
+        	int a = 100;
+        	int b = 10;
+    	}
+</pre></code language="java">
+	 
+	</ol>
+</google-codelab-step>
+
+
+    
+  </google-codelab>
+
+
+</body>
+</html>
